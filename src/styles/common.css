@@ -1,0 +1,38 @@
+:root {
+  --text: hsl(216, 11%, 91%);
+  --background: hsl(210, 11%, 7%);
+  --primary: hsl(204, 70%, 57%);
+  --dark-primary: color-mix(in srgb, var(--primary), #000 30%);
+  --secondary: hsl(255, 10%, 30%);
+  --accent: hsl(281, 10%, 59%);
+
+  --x-padding: 2rem;
+}
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  scroll-behavior: smooth;
+  color: inherit;
+
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2rem;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 8px;
+}
+
+.bg-color-transition {
+  --time: 180ms;
+
+  transition-property: background-color, color;
+  transition-duration: var(--time);
+  transition-timing-function: ease;
+}
