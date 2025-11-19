@@ -1,20 +1,16 @@
 import type { IMenuCategory, IMenuItem } from "@/types/globalInterfaces";
 import { findFrom } from "./globalUtils";
-import router from "@/router";
+import { getDocumentsByField } from "./firebaseFuncions";
 
 export async function getMenuObject(restaurantName: string, fallbackUrl?: string): Promise<IMenuCategory[]> {
-  const resp = await fetch(`http://127.0.0.1:5000/fetch-text?url_name=${ restaurantName }`);
-  if (!resp.ok) {
-    if (!!fallbackUrl) window.location.replace(fallbackUrl);
-    else router.push({ name: "error" });
+  const doc = (await getDocumentsByField("restaurant", restaurantName))[0];
 
+  if (!doc) {
+    window.location.replace(fallbackUrl || "");
     return [];
   }
 
-  const text = await resp.text();
-
-  const menu = parseMenu(text);
-  return menu;
+  return parseMenu(doc.data().menu_text);
 }
 
 function parseMenu(txtContent: string) {
@@ -41,7 +37,7 @@ function parseMenu(txtContent: string) {
     currentCategory.name = catName || "";
 
     const startIdx = catIdxs[i]! + 1;
-    const endIdx = catIdxs[i + 1]!;
+    const endIdx = catIdxs[i + 1] || lines.length;
 
     for (let j = startIdx; j < endIdx; j++) {
       const currentItem: IMenuItem = {

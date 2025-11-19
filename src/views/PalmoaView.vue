@@ -20,7 +20,7 @@ const categories = ref<IMenuCategory[]>([]);
 onMounted(async () => {
   setupMenuGlobals("Palmoa Gastrobar - Sincelejo", "./palmoa.ico");
   const menu = await getMenuObject(
-    "palmoa",
+    "palmoa_gastrobar",
     "file:///home/sef21/Downloads/Men%C3%BA%20Digital%20Palmoa.pdf"
   );
 
@@ -30,6 +30,7 @@ onMounted(async () => {
 
 <style scoped>
 .palmoa-view {
+  min-height: 100vh;
   background: url('../../public/palmoa_background.png');
   padding: 2px var(--x-padding);
 }
