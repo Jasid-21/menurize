@@ -2,7 +2,7 @@
   <div class="home-view">
     <div class="content-container">
       <div class="share-section" v-if="mode === 'share'">
-        <div class="qr-container"></div>
+        <QRCode :text="link"></QRCode>
         <div class="share-link-container">
           <span>{{ link }}</span>
           <div class="copy-btn bg-color-transition" @click="copyLink">
@@ -48,6 +48,7 @@ import { useAlert } from '@/composables/useAlert';
 import { useMenu } from '@/composables/useMenu';
 import { useRestaurant } from '@/composables/useRestaurant';
 import router from '@/router';
+import QRCode from '@/components/QRCode.vue';
 
 const { fireAlert } = useAlert();
 
@@ -55,7 +56,8 @@ const mode = ref<homeViewMode>('edit');
 const setMode = (v: homeViewMode) => mode.value = v;
 
 const { restaurant } = useRestaurant();
-const link = computed(() => `http://localhost:5173/${ restaurant.value }`);
+const domain = import.meta.env.VITE_DOMAIN;
+const link = computed(() => `${ domain }/${ restaurant.value }`);
 const copyLink = () => {
   navigator.clipboard.writeText(link.value);
 
@@ -96,13 +98,6 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-}
-
-.content-container .share-section .qr-container {
-  width: 20rem;
-  aspect-ratio: 1;
-  border: 1px solid var(--dark-primary);
-  border-radius: 0.5rem;
 }
 
 .content-container .share-section .share-link-container {
