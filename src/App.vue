@@ -1,6 +1,8 @@
 <template>
   <RouterView></RouterView>
 
+  <ModalsContainer></ModalsContainer>
+
   <div class="loading-screen" v-if="loading">
     <svg xmlns="http://www.w3.org/2000/svg" width="10rem" height="10rem" viewBox="0 0 24 24">
       <path fill="none" stroke="currentColor" stroke-dasharray="16" stroke-dashoffset="16" stroke-linecap="round"
@@ -14,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+import ModalsContainer from './components/modals/ModalsContainer.vue';
 import { useLoadingScreen } from './composables/useLoadingScreen';
 
 const { loading } = useLoadingScreen();

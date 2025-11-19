@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export function findFrom<T = any>(arr: T[], idx: number, value: T): number {
   for (let i = idx; i < arr.length; i++) {
     if (arr[i] === value) return i;
@@ -20,4 +21,19 @@ export function setFavicon(url: string) {
   }
 
   link.href = url;
+}
+
+export function getRandomCode(lim: number = 4): string {
+  const lower = 'abcdefghijklmnopqrstuvwxyz';
+  const upper = lower.toUpperCase();
+  const numbers = '0123456789';
+  const total = lower + upper + numbers;
+
+  let code = '';
+  for (let i = 0; i < lim; i++) {
+    const idx = Math.floor(Math.random() * (total.length - 1));
+    code += total[idx];
+  }
+
+  return code;
 }
