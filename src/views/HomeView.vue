@@ -83,8 +83,8 @@ onMounted(() => {
 }
 
 .content-container {
-  width: 100rem;
-  max-width: 100vw;
+  width: 100%;
+  max-width: 100rem;
   height: 100%;
 
   box-shadow: 0 0 0.5rem var(--primary);

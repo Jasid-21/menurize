@@ -33,4 +33,18 @@ const factor = 1;
   background-color: #11748e;
   border-radius: 50%;
 }
+
+@media (max-width: 400px) {
+  .category-name-circles {
+    gap: 0.25rem;
+  }
+
+  .circle {
+    width: calc(12px / (var(--idx) * var(--factor) * 1.2));
+  }
+
+  .circle:last-child {
+    display: none;
+  }
+}
 </style>

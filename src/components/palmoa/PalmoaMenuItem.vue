@@ -26,4 +26,10 @@ defineProps<{
   font-weight: 600;
   font-size: 2.5rem;
 }
+
+@media (max-width: 400px) {
+  .item-description {
+    grid-column: 1 / 3;
+  }
+}
 </style>

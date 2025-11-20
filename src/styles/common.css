@@ -7,6 +7,10 @@
   --accent: hsl(281, 10%, 59%);
 
   --x-padding: 20rem;
+  --x-padding-2: 15rem;
+  --x-padding-3: 10rem;
+  --x-padding-4: 5rem;
+  --x-padding-5: 2rem;
 }
 
 * {

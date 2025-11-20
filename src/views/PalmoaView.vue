@@ -35,6 +35,30 @@ onMounted(async () => {
   padding: 2px var(--x-padding);
 }
 
+@media (max-width: 950px) {
+  .palmoa-view {
+    padding: 2px var(--x-padding-2);
+  }
+}
+
+@media (max-width: 750px) {
+  .palmoa-view {
+    padding: 2px var(--x-padding-3);
+  }
+}
+
+@media (max-width: 550px) {
+  .palmoa-view {
+    padding: 2px var(--x-padding-4);
+  }
+}
+
+@media (max-width: 400px) {
+  .palmoa-view {
+    padding: 2px var(--x-padding-5);
+  }
+}
+
 .palmoa-name {
   display: flex;
   justify-content: center;
