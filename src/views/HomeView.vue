@@ -4,7 +4,7 @@
       <div class="share-section" v-if="mode === 'share'">
         <QRCode :text="link"></QRCode>
         <div class="share-link-container">
-          <span>{{ link }}</span>
+          <div class="link">{{ link }}</div>
           <div class="copy-btn bg-color-transition" @click="copyLink">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -106,15 +106,19 @@ onMounted(() => {
   border-radius: 0.5rem;
   padding: 0.5rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 5rem;
   gap: 1rem;
 }
 
-.content-container .share-section .share-link-container span {
+.content-container .share-section .share-link-container .link {
   color: var(--dark-primary);
   font-size: 2.5rem;
+  text-wrap: nowrap;
+  width: 100%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .content-container .share-section .share-link-container .copy-btn {
